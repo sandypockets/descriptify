@@ -9,7 +9,9 @@
     "lint": "yarn prettier -w ./ && next lint"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "next": "12.1.6",
+    "openai": "^2.0.5",
     "react": "18.1.0",
     "react-dom": "18.1.0"
   },
