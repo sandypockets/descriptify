@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Layout from "../components/Layout/Layout";
 
 export default function Home() {
   return (
@@ -11,9 +12,9 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>
-        Descriptify
-      </h1>
+      <Layout>
+        <h1>Descriptify</h1>
+      </Layout>
     </div>
   );
 }
