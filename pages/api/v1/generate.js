@@ -32,19 +32,22 @@ async function generateResponse(req, res) {
     maxCharLength,
   } = req.body;
 
-  const prompt = `Write a product description for a ${productType}. The product title is "${productTitle}". ${
-    hasVariants &&
-    `The product has ${productNumOfVars} options for ${productAvailVars}.`
-  } The description should be targeted towards ${productTargetMarket}, and the maximum length of the description should be ${maxCharLength} characters or less, rounded to the nearest full sentence.`;
+  const promptTypeAndTitle = `Write a product description for a ${productType}. The product title is "${productTitle}".`;
+  const promptVariants = `The product has options for ${productAvailVars}.`;
+  const promptInterests = `The product description should be written for an audience that is interested in ${productTargetMarket}.`;
+  const promptRequirements = `The maximum length of the description should be ${maxCharLength} characters or less, rounded to the nearest full sentence.`;
+  const prompt = `${promptTypeAndTitle}. ${promptInterests}. ${
+    hasVariants && promptVariants
+  }. ${promptRequirements}`;
 
   const response = await openai.createCompletion(engineId, {
     prompt: prompt,
     max_tokens: 64,
     temperature: 0,
     top_p: 1,
-    frequency_penalty: 0.5,
-    presence_penalty: 1.79,
-    best_of: 4,
+    frequency_penalty: 0.75,
+    presence_penalty: 2,
+    best_of: 5,
   });
   res.json(response.data);
 }
