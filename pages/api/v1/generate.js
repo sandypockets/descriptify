@@ -27,7 +27,6 @@ async function generateResponse(req, res) {
     productType,
     hasVariants,
     productAvailVars,
-    productNumOfVars,
     productTargetMarket,
     maxCharLength,
   } = req.body;
