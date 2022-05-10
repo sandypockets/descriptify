@@ -1,6 +1,12 @@
 import TextInput from './TextInput';
+import {error} from 'next/dist/build/output/log';
 
-export default function Form({productData, setProductData, handleSubmit}) {
+export default function Form({
+  productData,
+  setProductData,
+  handleSubmit,
+  loading,
+}) {
   return (
     <form>
       <fieldset className="flex">
@@ -11,6 +17,7 @@ export default function Form({productData, setProductData, handleSubmit}) {
           label="Product title"
           dataKey="productTitle"
           placeholder="Air Jordan 1 Mid"
+          error={error}
         />
         <div className="px-1" />
         <TextInput
@@ -19,6 +26,7 @@ export default function Form({productData, setProductData, handleSubmit}) {
           label="Product type"
           dataKey="productType"
           placeholder="Sneakers"
+          error={error}
         />
       </fieldset>
       <fieldset>
@@ -58,6 +66,8 @@ export default function Form({productData, setProductData, handleSubmit}) {
             label="Product options (separated by comma)"
             dataKey="productAvailVars"
             placeholder="Colors, sizes"
+            error={error}
+            required={false}
           />
         </div>
       </fieldset>
@@ -69,6 +79,7 @@ export default function Form({productData, setProductData, handleSubmit}) {
           label="Audience interests (separated by comma)"
           dataKey="productTargetMarket"
           placeholder="Basketball, street culture"
+          error={error}
         />
       </fieldset>
       <div className="mt-2">
@@ -77,7 +88,7 @@ export default function Form({productData, setProductData, handleSubmit}) {
           type="submit"
           onClick={(e) => handleSubmit(e)}
         >
-          Generate description
+          {loading ? 'Generating...' : 'Generate description'}
         </button>
       </div>
     </form>
