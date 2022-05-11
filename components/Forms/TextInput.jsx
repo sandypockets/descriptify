@@ -11,7 +11,7 @@ export default function TextInput({
     <div className="flex flex-col">
       <label
         htmlFor={dataKey}
-        className="text-sm font-medium text-gray-700 pt-2 pb-0.5"
+        className="text-xs font-normal text-gray-700 pt-2 pb-0.5"
       >
         {label}
         {required && error && productData[dataKey].length < 1 && (
@@ -29,7 +29,7 @@ export default function TextInput({
             [dataKey]: e.target.value,
           })
         }
-        className="border border-gray-300 px-2 py-1 rounded-md"
+        className="border border-gray-300 px-2 py-1 rounded-md font-light"
       />
     </div>
   );

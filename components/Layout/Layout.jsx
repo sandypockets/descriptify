@@ -6,7 +6,7 @@ export default function Layout({children}) {
     <>
       <Meta />
       <Header />
-      <main className="my-14">{children}</main>
+      <main className="my-24">{children}</main>
     </>
   );
 }

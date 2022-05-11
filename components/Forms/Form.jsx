@@ -38,7 +38,7 @@ export default function Form({
   }, [aiEngines]);
 
   return (
-    <form>
+    <form className="bg-white p-8 rounded-md shadow-xl">
       <fieldset className="flex">
         <legend className="sr-only">Product basics</legend>
         <TextInput
@@ -65,7 +65,7 @@ export default function Form({
           <div className="mx-auto text-sm">
             <label
               htmlFor="hasVariants"
-              className="font-medium text-gray-700 pt-2 pb-0.5"
+              className="font-normal text-gray-700 pt-2 pb-0.5"
             >
               This product has variants, like sizes or colors
             </label>
@@ -106,7 +106,7 @@ export default function Form({
         <TextInput
           productData={productData}
           setProductData={setProductData}
-          label="Audience interests (separated by comma)"
+          label="Target audience interests (separated by comma)"
           dataKey="productTargetMarket"
           placeholder="Basketball, street culture"
           error={error}
@@ -115,12 +115,12 @@ export default function Form({
       <fieldset>
         <legend className="sr-only">Artificial Intelligence Engine</legend>
         <div className="flex flex-col">
-          <label className="text-sm font-medium text-gray-700 pt-2 pb-0.5">
+          <label className="text-xs font-medium text-gray-700 pt-4 pb-0.5">
             Choose an AI engine
           </label>
           <select
             value={productData.aiEngine}
-            className="border border-gray-300 px-2 py-1 rounded-md"
+            className="border border-gray-300 px-2 py-1 rounded-md font-light"
             onChange={(e) =>
               setProductData({
                 ...productData,
@@ -138,16 +138,16 @@ export default function Form({
                   className="align-middle"
                 >
                   {engine.id}{' '}
-                  {engine.id.split('-')[1] === 'curie' && '- default'}
+                  {engine.id.split('-')[1] === 'curie' && '(default)'}
                 </option>
               ))
             )}
           </select>
         </div>
       </fieldset>
-      <div className="mt-2">
+      <div className="mt-6">
         <button
-          className="w-full px-3 py-2 text-xs font-medium rounded shadow-sm text-white bg-gray-900 hover:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 border border-transparent"
+          className="w-full px-3 py-2 text-sm font-medium tracking-wider rounded shadow-sm text-white hover:bg-black bg-gray-800 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 border border-transparent"
           type="submit"
           onClick={(e) => handleSubmit(e)}
         >
