@@ -38,7 +38,7 @@ export default function Form({
   }, [aiEngines]);
 
   return (
-    <form className="bg-white p-8 rounded-md shadow-xl">
+    <form className="bg-white py-8 px-14 rounded-md shadow-xl mx-auto">
       <fieldset className="flex">
         <legend className="sr-only">Product basics</legend>
         <TextInput

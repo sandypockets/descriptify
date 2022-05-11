@@ -9,6 +9,7 @@
     "lint": "yarn prettier -w ./ && next lint"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^1.35.3",
     "cors": "^2.8.5",
     "next": "12.1.6",
     "openai": "^2.0.5",

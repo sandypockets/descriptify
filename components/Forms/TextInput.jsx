@@ -8,7 +8,7 @@ export default function TextInput({
   required = true,
 }) {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full">
       <label
         htmlFor={dataKey}
         className="text-xs font-normal text-gray-700 pt-2 pb-0.5"

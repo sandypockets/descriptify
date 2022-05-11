@@ -1,5 +1,5 @@
 import Layout from '../components/Layout/Layout';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import Form from '../components/Forms/Form';
 
 export default function Home() {
@@ -17,6 +17,14 @@ export default function Home() {
   const [previousAiDescriptions, setPreviousAiDescriptions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+
+  useEffect(() => {
+    fetch('/api/v1/generate')
+      .then((response) => response.json())
+      .then((data) => {
+        setPreviousAiDescriptions(data);
+      });
+  }, [currentAiDescription]);
 
   function validateForm(formData) {
     let counter = 0;
@@ -81,7 +89,7 @@ export default function Home() {
           </div>
         </div>
         <section className="flex justify-center">
-          <div className="flex flex-col p-2">
+          <div className="flex flex-col">
             <Form
               productData={productData}
               setProductData={setProductData}
@@ -92,26 +100,53 @@ export default function Home() {
             <p
               className={
                 error
-                  ? 'mt-4 px-2 w-96 text-red-500'
-                  : 'mt-4 px-2 w-96 invisible'
+                  ? 'mt-4 px-2 max-w-2xl text-red-500'
+                  : 'mt-4 px-2 max-w-2xl invisible'
               }
             >
               Please fill in all required fields.
             </p>
-            <div className="mt-6 mx-auto w-96 font-light">
-              <p>
-                {currentAiDescription?.length > 0
-                  ? currentAiDescription
-                  : 'Add your product information to the fields above to generate a description.'}
-              </p>
-            </div>
-            <div>
+            <div className="mt-6">
               {previousAiDescriptions.length > 0 &&
-                previousAiDescriptions.map((item, index) => (
-                  <div key={index} className="mt-4 mx-auto w-96 font-light">
-                    {item}
-                  </div>
-                ))}
+                previousAiDescriptions
+                  .sort((a, b) => b.id - a.id)
+                  .map((item) => (
+                    <div
+                      key={item.id}
+                      className="mt-4 mx-auto max-w-lg font-light shadow-xl rounded-md p-5 bg-white"
+                    >
+                      <div className="flex justify-between">
+                        <div>
+                          <h4 className="font-semibold">
+                            <span>{item.title}</span>
+                            <span> - </span>
+                            <span>{item.type}</span>
+                          </h4>
+                          <h5 className="text-sm">
+                            <p>
+                              Generated with the{' '}
+                              <code className="text-xs border-2 rounded-md px-1 bg-gray-50">
+                                {item.ai_engine}
+                              </code>{' '}
+                              AI engine
+                            </p>
+                            <p>
+                              {item.has_variants ? 'Options for ' : ''}
+                              {item.options}
+                            </p>
+                          </h5>
+                        </div>
+                        <span>Copy</span>
+                      </div>
+                      <div className="mt-3">
+                        <h5 className="font-semibold">Description</h5>
+                        <p>{item.ai_response}</p>
+                        <hr className="my-3" />
+                        <h5 className="font-semibold">AI Prompt</h5>
+                        <p>{item.ai_prompt}</p>
+                      </div>
+                    </div>
+                  ))}
             </div>
           </div>
         </section>
