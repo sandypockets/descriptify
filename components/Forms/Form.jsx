@@ -1,4 +1,5 @@
 import TextInput from './TextInput';
+import {useState, useEffect} from 'react';
 import {error} from 'next/dist/build/output/log';
 
 export default function Form({
@@ -7,6 +8,35 @@ export default function Form({
   handleSubmit,
   loading,
 }) {
+  const [aiEngines, setAIEngines] = useState([]);
+  const [optionsLoading, setOptionsLoading] = useState(false);
+
+  useEffect(() => {
+    if (aiEngines.length === 0) {
+      setOptionsLoading(true);
+      fetch('/api/v1/engines', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data.data);
+          let filteredEngines = [];
+          for (const engine of data.data) {
+            const id = engine.id;
+            if (id.split('-')[0] === 'text' && id.split('-')[2] === '001') {
+              filteredEngines.push(engine);
+            }
+          }
+          setAIEngines(filteredEngines);
+          setOptionsLoading(false);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [aiEngines]);
+
   return (
     <form>
       <fieldset className="flex">
@@ -81,6 +111,39 @@ export default function Form({
           placeholder="Basketball, street culture"
           error={error}
         />
+      </fieldset>
+      <fieldset>
+        <legend className="sr-only">Artificial Intelligence Engine</legend>
+        <div className="flex flex-col">
+          <label className="text-sm font-medium text-gray-700 pt-2 pb-0.5">
+            Choose an AI engine
+          </label>
+          <select
+            value={productData.aiEngine}
+            className="border border-gray-300 px-2 py-1 rounded-md"
+            onChange={(e) =>
+              setProductData({
+                ...productData,
+                aiEngine: e.target.value,
+              })
+            }
+          >
+            {optionsLoading ? (
+              <option>Loading engines...</option>
+            ) : (
+              aiEngines.map((engine) => (
+                <option
+                  key={engine.id}
+                  value={engine.id}
+                  className="align-middle"
+                >
+                  {engine.id}{' '}
+                  {engine.id.split('-')[1] === 'curie' && '- default'}
+                </option>
+              ))
+            )}
+          </select>
+        </div>
       </fieldset>
       <div className="mt-2">
         <button

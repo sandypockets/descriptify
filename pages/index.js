@@ -10,6 +10,8 @@ export default function Home() {
     productAvailVars: '',
     productTargetMarket: '',
     maxCharLength: 200,
+    useCustomAiEngine: false,
+    aiEngine: 'text-curie-001',
   });
   const [currentAiDescription, setCurrentAiDescription] = useState(
     'Add your product information to the fields above to generate a description.',

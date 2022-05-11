@@ -8,7 +8,7 @@ const cors = initMiddleware(
   // https://github.com/expressjs/cors#configuration-options
   Cors({
     // Only allow requests with GET, POST
-    methods: ['GET', 'POST'],
+    methods: ['POST'],
   }),
 );
 
@@ -21,7 +21,6 @@ async function generateResponse(req, res) {
   });
   const openai = new OpenAIApi(configuration);
 
-  const engineId = 'text-curie-001';
   const {
     productTitle,
     productType,
@@ -29,6 +28,7 @@ async function generateResponse(req, res) {
     productAvailVars,
     productTargetMarket,
     maxCharLength,
+    aiEngine,
   } = req.body;
 
   const promptTypeAndTitle = `Write a product description for a ${productType}. The product title is "${productTitle}".`;
@@ -39,7 +39,7 @@ async function generateResponse(req, res) {
     hasVariants && promptVariants
   }. ${promptRequirements}`;
 
-  const response = await openai.createCompletion(engineId, {
+  const response = await openai.createCompletion(aiEngine, {
     prompt: prompt,
     max_tokens: 64,
     temperature: 0,
