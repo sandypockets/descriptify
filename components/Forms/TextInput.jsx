@@ -5,7 +5,7 @@ export default function TextInput({
   label,
   placeholder,
   error,
-  required = true,
+  required = true
 }) {
   return (
     <div className="flex flex-col w-full">
@@ -29,7 +29,7 @@ export default function TextInput({
             [dataKey]: e.target.value,
           })
         }
-        className="border border-gray-300 px-2 py-1 rounded-md font-light"
+        className="border border-gray-300 px-6 py-1 rounded-md font-light"
       />
     </div>
   );

@@ -38,8 +38,8 @@ export default function Form({
   }, [aiEngines]);
 
   return (
-    <form className="bg-white py-8 px-14 rounded-md shadow-xl mx-auto">
-      <fieldset className="flex">
+    <form className="bg-white p-6 rounded-md shadow-xl mx-4 sm:mx-auto">
+      <fieldset className="flex flex-col sm:flex-row">
         <legend className="sr-only">Product basics</legend>
         <TextInput
           productData={productData}
