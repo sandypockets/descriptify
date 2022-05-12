@@ -1,8 +1,8 @@
 import Layout from '../components/Layout/Layout';
 import {useState, useEffect} from 'react';
 import Form from '../components/Forms/Form';
-import BackToTop from "../components/BackToTop";
-import CopyToClipboard from "../components/CopyToClipboard";
+import BackToTop from '../components/BackToTop';
+import CopyToClipboard from '../components/CopyToClipboard';
 
 export default function Home() {
   const [productData, setProductData] = useState({
@@ -19,7 +19,6 @@ export default function Home() {
   const [previousAiDescriptions, setPreviousAiDescriptions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-
 
   useEffect(() => {
     fetch('/api/v1/generate')
@@ -76,7 +75,9 @@ export default function Home() {
       <Layout>
         <div className="flex flex-row justify-center">
           <div className="flex flex-col">
-            <h1 className="mx-auto text-4xl sm:text-7xl font-bold">Descriptify</h1>
+            <h1 className="mx-auto text-4xl sm:text-7xl font-bold">
+              Descriptify
+            </h1>
             <h3 className="mx-6 sm:mx-auto mt-5 mb-2 text-md font-light text-center sm:text-left">
               Generate enticing product descriptions in just a few clicks!
             </h3>

@@ -5,7 +5,7 @@ export default function TextInput({
   label,
   placeholder,
   error,
-  required = true
+  required = true,
 }) {
   return (
     <div className="flex flex-col w-full">
