@@ -61,8 +61,8 @@ export default function Form({
       </fieldset>
       <fieldset>
         <legend className="sr-only">Product variants</legend>
-        <div className="flex flex-row-reverse pt-4 mx-2">
-          <div className="mx-auto text-sm">
+        <div className="flex flex-row-reverse pt-4 mx-auto">
+          <div className="mx-auto text-xs sm:text-sm pt-0.5 sm:pt-0">
             <label
               htmlFor="hasVariants"
               className="font-normal text-gray-700 pt-2 pb-0.5"
@@ -74,7 +74,7 @@ export default function Form({
             id="hasVariants"
             name="hasVariants"
             type="checkbox"
-            className="h-5 w-5 rounded"
+            className="h-5 w-5 rounded ml-8"
             onChange={(e) =>
               setProductData({
                 ...productData,

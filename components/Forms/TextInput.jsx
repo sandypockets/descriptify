@@ -29,7 +29,7 @@ export default function TextInput({
             [dataKey]: e.target.value,
           })
         }
-        className="border border-gray-300 px-6 py-1 rounded-md font-light"
+        className="border border-gray-300 pl-2 pr-10 py-1 rounded-md font-light"
       />
     </div>
   );

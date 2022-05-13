@@ -23,7 +23,7 @@ export default function CopyToClipboard({text}) {
       <div onClick={() => handleCopy(text)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6 cursor-pointer"
+          className="h-6 w-6 cursor-pointer text-gray-500 hover:text-black transition-all duration-200"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
