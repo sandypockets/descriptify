@@ -38,7 +38,10 @@ export default function Form({
   }, [aiEngines]);
 
   return (
-    <form className="bg-white p-6 rounded-md shadow-xl mx-4 sm:mx-auto">
+    <form
+      data-test="form"
+      className="bg-white p-6 rounded-md shadow-xl mx-4 sm:mx-auto"
+    >
       <fieldset className="flex flex-col sm:flex-row">
         <legend className="sr-only">Product basics</legend>
         <TextInput
@@ -48,6 +51,7 @@ export default function Form({
           dataKey="productTitle"
           placeholder="Air Jordan 1 Mid"
           error={error}
+          dataTest="form-product-title"
         />
         <div className="px-1" />
         <TextInput
@@ -57,6 +61,7 @@ export default function Form({
           dataKey="productType"
           placeholder="Sneakers"
           error={error}
+          dataTest="form-product-type"
         />
       </fieldset>
       <fieldset>
@@ -81,6 +86,7 @@ export default function Form({
                 hasVariants: e.target.checked,
               })
             }
+            data-test="form-product-has-variants"
           />
         </div>
         <div
@@ -98,6 +104,7 @@ export default function Form({
             placeholder="Colors, sizes"
             error={error}
             required={false}
+            dataTest="form-product-avail-vars"
           />
         </div>
       </fieldset>
@@ -110,6 +117,7 @@ export default function Form({
           dataKey="productTargetMarket"
           placeholder="Basketball, street culture"
           error={error}
+          dataTest="form-product-target-market"
         />
       </fieldset>
       <fieldset>
@@ -127,6 +135,7 @@ export default function Form({
                 aiEngine: e.target.value,
               })
             }
+            data-test="form-product-ai-engine"
           >
             {optionsLoading ? (
               <option>Loading engines...</option>
@@ -147,6 +156,7 @@ export default function Form({
       </fieldset>
       <div className="mt-6">
         <button
+          data-test="submit-form-button"
           className="w-full px-3 py-2 text-sm font-medium tracking-wider rounded shadow-sm text-white hover:bg-black bg-gray-800 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 border border-transparent"
           type="submit"
           onClick={(e) => handleSubmit(e)}

@@ -6,6 +6,7 @@ export default function TextInput({
   placeholder,
   error,
   required = true,
+  dataTest,
 }) {
   return (
     <div className="flex flex-col w-full">
@@ -15,10 +16,13 @@ export default function TextInput({
       >
         {label}
         {required && error && productData[dataKey].length < 1 && (
-          <span className="text-red-500">*</span>
+          <span data-test="asterisk-error" className="text-red-500">
+            *
+          </span>
         )}
       </label>
       <input
+        data-test={dataTest}
         name={dataKey}
         id={dataKey}
         type="text"

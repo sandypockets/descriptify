@@ -102,6 +102,7 @@ export default function Home() {
               error={error}
             />
             <p
+              data-test="missing-fields-error"
               className={
                 error
                   ? 'mt-4 px-2 max-w-2xl text-red-500'
@@ -116,6 +117,11 @@ export default function Home() {
                   .sort((a, b) => b.id - a.id)
                   .map((item) => (
                     <div
+                      data-test={item.title
+                        ?.toString()
+                        .toLowerCase()
+                        .split(' ')
+                        .join('-')}
                       key={item.id}
                       className="mt-4 mx-4 sm:mx-auto max-w-sm sm:max-w-lg font-light shadow-xl rounded-md p-5 bg-white"
                     >

@@ -16,6 +16,7 @@ export default function Nav() {
           <li key={index} className="mt-7">
             <Link href={item.href}>
               <a
+                data-test="logo"
                 target={item.target}
                 className="p-2 mx-2 hover:text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-blue-500 transition-colors duration-200"
               >
