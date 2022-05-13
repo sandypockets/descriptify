@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "yarn prettier -w ./ && next lint"
+    "lint": "yarn prettier -w ./ && next lint",
+    "test": "yarn run cypress open"
   },
   "dependencies": {
     "@supabase/supabase-js": "^1.35.3",
