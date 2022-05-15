@@ -2,12 +2,12 @@
 A simple product description generator, powered by [OpenAI](https://openai.com/api/).
 
 ## 📖 Table of Contents
-- [Tech stack](https://github.com/sandypockets/descriptify#tech-stack)
-- [Getting started](https://github.com/sandypockets/descriptify#getting-started)
-  - [Dependencies](https://github.com/sandypockets/descriptify#dependencies)
+- [Tech stack](https://github.com/sandypockets/descriptify#-tech-stack)
+- [Getting started](https://github.com/sandypockets/descriptify#-getting-started)
+  - [Dependencies](https://github.com/sandypockets/descriptify#-dependencies)
   - [Dev dependencies](https://github.com/sandypockets/descriptify#dev-dependencies)
-- [Testing](https://github.com/sandypockets/descriptify#testing)
-- [Screenshots](https://github.com/sandypockets/descriptify#screenshots)
+- [Testing](https://github.com/sandypockets/descriptify#-testing)
+- [Screenshots](https://github.com/sandypockets/descriptify#-screenshots)
 
 ## 🚀 Tech stack
 - [React.js](https://reactjs.org/)
