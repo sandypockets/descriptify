@@ -79,7 +79,7 @@ export default function Form({
             id="hasVariants"
             name="hasVariants"
             type="checkbox"
-            className="h-5 w-5 rounded ml-8"
+            className="h-5 w-5 rounded mx-4 sm:ml-8"
             onChange={(e) =>
               setProductData({
                 ...productData,
