@@ -96,3 +96,4 @@ yarn test
 ```
 
 ## 📸 Screenshots
+![app screenshot](./docs/screenshot_1.png)
