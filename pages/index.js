@@ -25,8 +25,9 @@ export default function Home() {
       .then((response) => response.json())
       .then((data) => {
         setPreviousAiDescriptions(data);
+        console.log("DATA: ", data);
       });
-  }, [currentAiDescription]);
+  }, [currentAiDescription, previousAiDescriptions]);
 
   function validateForm(formData) {
     let counter = 0;
@@ -60,10 +61,8 @@ export default function Home() {
         body: JSON.stringify(productData),
       })
         .then((response) => response.json())
-        .then((data) => {
-          setLoading(false);
-          setCurrentAiDescription(data?.choices[0]?.text);
-        })
+        .then((data) => { setCurrentAiDescription(data?.choices[0]?.text) })
+        .then((data) => setLoading(false))
         .catch((err) => console.log(err));
     } else {
       setLoading(false);

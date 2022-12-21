@@ -15,7 +15,7 @@ const cors = initMiddleware(
 
 async function saveToDb(body, prompt, aiResponse) {
   try {
-    const {data, error} = await supabase.from('product_descriptions').insert([
+    const {data, error} = await supabase.from('descriptify_product_descriptions').insert([
       {
         title: body.productTitle,
         type: body.productType,
@@ -82,7 +82,7 @@ async function generateResponse(req, res) {
 
 async function getAllDescriptions(req, res) {
   try {
-    const {data, error} = await supabase.from('product_descriptions').select();
+    const {data, error} = await supabase.from('descriptify_product_descriptions').select();
     if (data) res.json(data);
     if (error) console.error('Error getting descriptions: ', error);
   } catch (err) {
